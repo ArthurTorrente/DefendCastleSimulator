@@ -6,7 +6,7 @@ public class ArmyFollow : MonoBehaviour {
 
     public ArmyController controller;
     public Animator animatorController;
-
+    public bool velocityMode = false;
     Vector3 GetSeparationVector(Transform target)
     {
         var diff = transform.position - target.transform.position;
@@ -17,7 +17,21 @@ public class ArmyFollow : MonoBehaviour {
 
     void Update()
     {
-        animatorController.SetFloat("Velocity", controller.velocity);
+        if (animatorController != null)
+        {   
+            if(velocityMode)
+                animatorController.SetFloat("Velocity", controller.velocity);
+            else
+            {
+                if (controller.velocity != 0)
+                    animatorController.SetBool("Forward", true);
+                else
+                    animatorController.SetBool("Forward", false);
+            }
+        }
+           
+
+
         var currentPosition = transform.position;
         var currentRotation = transform.rotation;
 
