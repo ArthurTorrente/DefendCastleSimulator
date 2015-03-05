@@ -47,6 +47,22 @@ public class ArmyManager : MonoBehaviour
             getNeighboors(boid);
 
             //Calcul des behavior
+            /*if (false)                                  // Olol j'ai plus beaucoup de vie, faut que je rentre
+            {
+                boid.Target = m_base;
+            }*/
+            if (boid.m_fightRange.Count != 0)          // Test de je peux taper qqun -> plus de déplacement, je le défonce
+            {
+                boid.Target = getNearestEnemyInFightRange(boid);
+            }
+            else if (boid.m_visionRange.Count != 0)         // Test de je vois qqun -> il devient ma target
+            {
+                boid.Target = getNearestEnemyInVisionRange(boid);
+            }
+            else                                            // Sinon je fonce sur la base ennemie
+            {
+                boid.Target = m_opposing.m_base;
+            }
         }
     }
 
@@ -75,5 +91,39 @@ public class ArmyManager : MonoBehaviour
 
         foreach (Collider boidVision in neighboors)
             boid.m_neighboors.Add(boidVision.GetComponent<BoidScript>());
+    }
+
+    private Transform getNearestEnemyInFightRange(BoidScript bs)
+    {
+        Transform t = bs.Target;
+        float currDistance = Vector3.Distance(bs.Transform.position, bs.Target.position), distance;
+        foreach (BoidScript enemy in bs.m_fightRange)
+        {
+            distance = Vector3.Distance(bs.Transform.position, enemy.Transform.position);
+            if (distance < currDistance)
+            {
+                t = enemy.Transform;
+                currDistance = distance;
+            }
+        }
+
+        return t;
+    }
+
+    private Transform getNearestEnemyInVisionRange(BoidScript bs)
+    {
+        Transform t = bs.Target;
+        float currDistance = Vector3.Distance(bs.Transform.position, bs.Target.position), distance;
+        foreach (BoidScript enemy in bs.m_visionRange)
+        {
+            distance = Vector3.Distance(bs.Transform.position, enemy.Transform.position);
+            if (distance < currDistance)
+            {
+                t = enemy.Transform;
+                currDistance = distance;
+            }
+        }
+
+        return t;
     }
 }
