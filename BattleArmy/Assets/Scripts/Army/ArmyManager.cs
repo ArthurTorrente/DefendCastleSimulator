@@ -45,7 +45,7 @@ public class ArmyManager : MonoBehaviour
 
             getVision(boid);
 
-            if(boid.m_fightRange.Count == 0 && boid.m_visionRange.Count == 0)
+            if(boid.m_fightRange == null && boid.m_visionRange == null)
                 getNeighboors(boid);
 
             //Calcul des behavior
@@ -53,13 +53,13 @@ public class ArmyManager : MonoBehaviour
             {
                 boid.Target = m_base;
             }*/
-            if (boid.m_fightRange.Count != 0)          // Test de je peux taper qqun -> plus de déplacement, je le défonce
+            if (boid.m_fightRange != null)          // Test de je peux taper qqun -> plus de déplacement, je le défonce
             {
-                boid.Target = getNearestEnemyInFightRange(boid);
+                //boid.Target = getNearestEnemyInFightRange(boid);
             }
-            else if (boid.m_visionRange.Count != 0)         // Test de je vois qqun -> il devient ma target
+            else if (boid.m_visionRange != null)         // Test de je vois qqun -> il devient ma target
             {
-                boid.Target = getNearestEnemyInVisionRange(boid);
+                //boid.Target = getNearestEnemyInVisionRange(boid);
             }
             else                                            // Sinon je fonce sur la base ennemie
             {
@@ -71,20 +71,41 @@ public class ArmyManager : MonoBehaviour
     private void getVision(BoidScript boid)
     {
         var fightRange = Physics.OverlapSphere(boid.Transform.position, boid.FightVision, m_opposingLayer);
-        
-        boid.m_fightRange.Clear();
+
+        boid.m_fightRange = null;
+        float minDist = float.MaxValue;
 
         foreach (Collider boidVision in fightRange)
-            boid.m_fightRange.Add(boidVision.GetComponent<BoidScript>());
+        {
+            BoidScript curBoid = boidVision.GetComponent<BoidScript>();
+            float curDist = Vector3.Distance(curBoid.Transform.position, boid.Transform.position);
 
-        if (boid.m_fightRange.Count == 0)
+            if(curDist < minDist)
+            {
+                boid.m_fightRange = curBoid;
+                minDist = curDist;
+            }
+            
+        }
+
+        if (boid.m_fightRange == null)
         {
             var visionRange = Physics.OverlapSphere(boid.Transform.position, boid.RangeVision, m_opposingLayer);
 
-            boid.m_visionRange.Clear();
+            boid.m_visionRange = null;
+            minDist = float.MaxValue;
 
             foreach (Collider boidVision in visionRange)
-                boid.m_visionRange.Add(boidVision.GetComponent<BoidScript>());
+            {
+                BoidScript curBoid = boidVision.GetComponent<BoidScript>();
+                float curDist = Vector3.Distance(curBoid.Transform.position, boid.Transform.position);
+
+                if (curDist < minDist)
+                {
+                    boid.m_visionRange = curBoid;
+                    minDist = curDist;
+                }
+            }
         }
     }
 
@@ -98,7 +119,7 @@ public class ArmyManager : MonoBehaviour
             boid.m_neighboors.Add(boidVision.GetComponent<BoidScript>());
     }
 
-    private Transform getNearestEnemyInFightRange(BoidScript bs)
+    /*private Transform getNearestEnemyInFightRange(BoidScript bs)
     {
         Transform t = bs.Target;
         float currDistance = Vector3.Distance(bs.Transform.position, bs.Target.position), distance;
@@ -113,9 +134,9 @@ public class ArmyManager : MonoBehaviour
         }
 
         return t;
-    }
+    }*/
 
-    private Transform getNearestEnemyInVisionRange(BoidScript bs)
+    /*private Transform getNearestEnemyInVisionRange(BoidScript bs)
     {
         Transform t = bs.Target;
         float currDistance = Vector3.Distance(bs.Transform.position, bs.Target.position), distance;
@@ -130,5 +151,5 @@ public class ArmyManager : MonoBehaviour
         }
 
         return t;
-    }
+    }*/
 }

@@ -22,8 +22,8 @@ public class BoidScript : MonoBehaviour
         set { m_target = value; }
     }
 
-    public List<BoidScript> m_fightRange;
-    public List<BoidScript> m_visionRange;
+    public BoidScript m_fightRange;
+    public BoidScript m_visionRange;
     public List<BoidScript> m_neighboors;
 
     [SerializeField]
