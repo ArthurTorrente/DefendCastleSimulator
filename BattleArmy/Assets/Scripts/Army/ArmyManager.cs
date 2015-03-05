@@ -44,7 +44,9 @@ public class ArmyManager : MonoBehaviour
             //Calculs des targets
 
             getVision(boid);
-            getNeighboors(boid);
+
+            if(boid.m_fightRange.Count == 0 && boid.m_visionRange.Count == 0)
+                getNeighboors(boid);
 
             //Calcul des behavior
             /*if (false)                                  // Olol j'ai plus beaucoup de vie, faut que je rentre
@@ -68,19 +70,22 @@ public class ArmyManager : MonoBehaviour
 
     private void getVision(BoidScript boid)
     {
-        var visionRange = Physics.OverlapSphere(boid.Transform.position, boid.RangeVision, m_opposingLayer);
-
-        boid.m_visionRange.Clear();
-
-        foreach (Collider boidVision in visionRange)
-            boid.m_visionRange.Add(boidVision.GetComponent<BoidScript>());
-
         var fightRange = Physics.OverlapSphere(boid.Transform.position, boid.FightVision, m_opposingLayer);
         
         boid.m_fightRange.Clear();
 
         foreach (Collider boidVision in fightRange)
             boid.m_fightRange.Add(boidVision.GetComponent<BoidScript>());
+
+        if (boid.m_fightRange.Count == 0)
+        {
+            var visionRange = Physics.OverlapSphere(boid.Transform.position, boid.RangeVision, m_opposingLayer);
+
+            boid.m_visionRange.Clear();
+
+            foreach (Collider boidVision in visionRange)
+                boid.m_visionRange.Add(boidVision.GetComponent<BoidScript>());
+        }
     }
 
     private void getNeighboors(BoidScript boid)
