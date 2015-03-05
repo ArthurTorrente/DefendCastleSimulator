@@ -34,7 +34,7 @@ public class HealthManager : MonoBehaviour
         m_regenMode = false;
     }
 
-    void takeDamage(int value)
+    public void takeDamage(int value)
     {
         m_curLife = Mathf.Clamp(m_curLife - value, 0, m_maxLife);
 
@@ -44,7 +44,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    void regenLife(int value)
+    public void regenLife(int value)
     {
         m_curLife = Mathf.Clamp(m_curLife - value, 0, m_maxLife);
 

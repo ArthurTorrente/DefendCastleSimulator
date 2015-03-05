@@ -51,48 +51,80 @@ public class BoidScript : MonoBehaviour
     }
 
     [SerializeField]
+    private HealthManager _healthManager;
+    public HealthManager HealthManager
+    {
+        get { return _healthManager; }
+        set { _healthManager = value; }
+    }
+
+    [SerializeField]
     private float m_velocity = 1.0f;
+
+    [SerializeField]
+    private int m_attackDamage = 10;
+
+    [SerializeField]
+    private float m_attackSpeed = 0.5f;
+
+    private float timestamp = 0;
 
     void update()
     {
-        var currentPosition = m_transform.position;
-        var currentRotation = m_transform.rotation;
-
-        var separation = Vector3.zero;
-        var alignment = m_target.forward;
-        var cohesion = m_target.position;
-
-        foreach(BoidScript boid in m_neighboors)
+        if (m_fightRange != null)       // Je peux taper une cible
         {
-            // TODO: s'ignorer
-            var t = boid.Transform;
-            separation += GetSeparationVector(t);
-            alignment += t.forward;
-            cohesion += t.position;
+            if (timestamp == 0 || Time.time >= timestamp + m_attackSpeed)
+            {
+                m_fightRange.HealthManager.takeDamage(m_attackDamage);
+                timestamp = Time.time;
+            }            
+        }
+        else if (m_visionRange != null) // Je vois qqun donc je me dirige vers elle
+        {
+            m_transform.position += m_target.position.normalized * Time.deltaTime;
+        }
+        else                            // Je me déplace en mode boids
+        {
+            var currentPosition = m_transform.position;
+            var currentRotation = m_transform.rotation;
+
+            var separation = Vector3.zero;
+            var alignment = m_target.forward;
+            var cohesion = m_target.position;
+
+            foreach (BoidScript boid in m_neighboors)
+            {
+                // TODO: s'ignorer
+                var t = boid.Transform;
+                separation += GetSeparationVector(t);
+                alignment += t.forward;
+                cohesion += t.position;
+            }
+
+            //Division par le nombdre de boids afin de récupérer l'algnement et la cohesion
+            var average = 1.0f / ((m_neighboors.Count > 0) ? m_neighboors.Count : 1.0f);
+            alignment *= average;
+            cohesion *= average;
+            cohesion = (cohesion - currentPosition).normalized;
+
+            // Calcule de la direction du boids
+            var direction_tmp = separation + alignment + cohesion;
+            var direction = new Vector3(direction_tmp.x, 0, direction_tmp.z);//separation + alignment + cohesion;
+            var rotation = Quaternion.FromToRotation(Vector3.forward, direction.normalized);
+
+            // Smooth du changement de direction
+            if (rotation != currentRotation)
+            {
+                Quaternion rotation_tmp = Quaternion.Slerp(rotation, currentRotation, 0.8f);
+                transform.rotation = new Quaternion(0, rotation_tmp.y, 0, rotation_tmp.w);
+
+            }
+
+            // Déplacement du boids.
+            Vector3 transform_tmp = currentPosition + m_transform.forward * (m_velocity * Time.deltaTime);
+            transform.position = new Vector3(transform_tmp.x, transform.position.y, transform_tmp.z);
         }
 
-        //Division par le nombdre de boids afin de récupérer l'algnement et la cohesion
-        var average = 1.0f / ((m_neighboors.Count > 0) ? m_neighboors.Count : 1.0f);
-        alignment *= average;
-        cohesion *= average;
-        cohesion = (cohesion - currentPosition).normalized;
-
-        // Calcule de la direction du boids
-        var direction_tmp = separation + alignment + cohesion;
-        var direction = new Vector3(direction_tmp.x, 0, direction_tmp.z);//separation + alignment + cohesion;
-        var rotation = Quaternion.FromToRotation(Vector3.forward, direction.normalized);
-
-        // Smooth du changement de direction
-        if (rotation != currentRotation)
-        {
-            Quaternion rotation_tmp = Quaternion.Slerp(rotation, currentRotation, 0.8f);
-            transform.rotation = new Quaternion(0, rotation_tmp.y, 0, rotation_tmp.w);
-
-        }
-
-        // Déplacement du boids.
-        Vector3 transform_tmp = currentPosition + m_transform.forward * (m_velocity * Time.deltaTime);
-        transform.position = new Vector3(transform_tmp.x, transform.position.y, transform_tmp.z);
     }
 
     private Vector3 GetSeparationVector(Transform target)
