@@ -70,6 +70,7 @@
      <Compile Include="Assets\Packages\PigeonCoopToolkit\__Effects (Trails) Examples\Scripts\TankWeaponController.cs" />
      <Compile Include="Assets\Scripts\Army\ArmyManager.cs" />
      <Compile Include="Assets\Scripts\Boids\BoidScript.cs" />
+     <Compile Include="Assets\Scripts\Test\OverlapseSphere.cs" />
      <Compile Include="Assets\Scripts\Utils\Settings.cs" />
      <None Include="Assets\Packages\PigeonCoopToolkit\__SharedDemoAssets\_Shaders\Unlit Transparent Color.shader" />
      <None Include="Assets\Models\Military_Rifle_01_Free_v2\Docs\Military_Rifle_Free_Unity_Info.txt" />
