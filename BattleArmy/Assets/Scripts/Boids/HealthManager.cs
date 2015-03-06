@@ -27,6 +27,9 @@ public class HealthManager : MonoBehaviour
     [SerializeField]
     private UnityEvent m_regenModeDisable;
 
+    [SerializeField]
+    private UnityEvent m_deathEvent;
+
     void Start()
     {
         m_curLife = m_maxLife;
@@ -41,6 +44,11 @@ public class HealthManager : MonoBehaviour
         if(!m_regenMode && m_curLife <= 25)
         {
             m_regenMode = true;
+            m_regenModeEnable.Invoke();
+        }
+        if (m_curLife == 0)
+        {
+            m_deathEvent.Invoke();
         }
     }
 
@@ -51,6 +59,7 @@ public class HealthManager : MonoBehaviour
         if(m_regenMode && m_curLife >= 50)
         {
             m_regenMode = false;
+            m_regenModeDisable.Invoke();
         }
     }
 }

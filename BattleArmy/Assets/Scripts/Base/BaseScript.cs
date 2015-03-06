@@ -18,16 +18,4 @@ public class BaseScript : MonoBehaviour
         get { return m_healthManager; }
         set { m_healthManager = value; }
     }
-
-	// Use this for initialization
-	void Start () 
-    {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
 }

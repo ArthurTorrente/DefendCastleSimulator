@@ -29,11 +29,32 @@ public class ArmyManager : MonoBehaviour
     {
         m_units = new List<BoidScript>();
 
-        //Instancie tous les boids
-        for(int i = 0; i < m_settings.unitCount; ++i)
+        SpawnTest();
+    }
+
+    public void SpawnTest()
+    {
+        for (var i = 0; i < m_settings.unitCount; i++)
         {
+            var randomRange = Random.Range(0, 30);
+            var angle = i * Mathf.PI * 2 / m_settings.unitCount;
+            var pos = m_base.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * randomRange;
+
+            BoidScript boid = (Instantiate(m_prefabsBoid, pos, Quaternion.identity) as Transform).GetComponent<BoidScript>();
+
+            boid.Base = m_base;
+            boid.OpposingBase = m_opposing.m_base;
+            boid.GotoHome.m_base = m_base;
+
+            boid.DeathScript.AfterDeath.AddListener(
+                delegate
+                {
+                    deleteBoid(boid);
+                }
+                );
+
             //Instanciate
-            m_units.Add(((Transform)Instantiate(m_prefabsBoid, m_base.position, m_base.rotation)).GetComponent<BoidScript>());
+            m_units.Add(boid);
         }
     }
 
@@ -47,24 +68,6 @@ public class ArmyManager : MonoBehaviour
 
             if(boid.m_fightRange == null && boid.m_visionRange == null)
                 getNeighboors(boid);
-
-            //Calcul des behavior
-            /*if (false)                                  // Olol j'ai plus beaucoup de vie, faut que je rentre
-            {
-                boid.Target = m_base;
-            }*/
-            if (boid.m_fightRange != null)          // Test de je peux taper qqun -> plus de déplacement, je le défonce
-            {
-                //boid.Target = getNearestEnemyInFightRange(boid);
-            }
-            else if (boid.m_visionRange != null)         // Test de je vois qqun -> il devient ma target
-            {
-                //boid.Target = getNearestEnemyInVisionRange(boid);
-            }
-            else                                            // Sinon je fonce sur la base ennemie
-            {
-                boid.Target = m_opposing.m_base;
-            }
         }
     }
 
@@ -119,37 +122,14 @@ public class ArmyManager : MonoBehaviour
             boid.m_neighboors.Add(boidVision.GetComponent<BoidScript>());
     }
 
-    /*private Transform getNearestEnemyInFightRange(BoidScript bs)
+    public void deleteBoid(BoidScript boid)
     {
-        Transform t = bs.Target;
-        float currDistance = Vector3.Distance(bs.Transform.position, bs.Target.position), distance;
-        foreach (BoidScript enemy in bs.m_fightRange)
-        {
-            distance = Vector3.Distance(bs.Transform.position, enemy.Transform.position);
-            if (distance < currDistance)
-            {
-                t = enemy.Transform;
-                currDistance = distance;
-            }
-        }
+        m_units.Remove(boid);
+    }
 
-        return t;
-    }*/
-
-    /*private Transform getNearestEnemyInVisionRange(BoidScript bs)
+    public void winAnimAllBoid()
     {
-        Transform t = bs.Target;
-        float currDistance = Vector3.Distance(bs.Transform.position, bs.Target.position), distance;
-        foreach (BoidScript enemy in bs.m_visionRange)
-        {
-            distance = Vector3.Distance(bs.Transform.position, enemy.Transform.position);
-            if (distance < currDistance)
-            {
-                t = enemy.Transform;
-                currDistance = distance;
-            }
-        }
-
-        return t;
-    }*/
+        foreach (BoidScript boid in m_units)
+            boid.launchWinAnim();
+    }
 }

@@ -11,6 +11,6 @@ public class GoToHomeScript : MonoBehaviour
 
     void Update()
     {
-        m_transform.position += m_base.position.normalized * Time.deltaTime;
+        m_transform.position += (m_base.position - m_transform.position).normalized * Time.deltaTime;
     }
 }

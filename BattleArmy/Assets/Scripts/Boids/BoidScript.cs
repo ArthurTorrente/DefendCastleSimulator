@@ -7,6 +7,12 @@ using System.Threading;
 public class BoidScript : MonoBehaviour
 {
     [SerializeField]
+    private Animator m_animator;
+
+    [SerializeField]
+    private string m_winAnimName;
+
+    [SerializeField]
     private Transform m_transform;
     public Transform Transform
     {
@@ -21,6 +27,24 @@ public class BoidScript : MonoBehaviour
         get { return m_target; }
         set { m_target = value; }
     }
+
+    [SerializeField]
+    private Transform m_base;
+    public Transform Base
+    {
+        get { return m_base; }
+        set { m_base = value; }
+    }
+
+    [SerializeField]
+    private Transform m_opposingBase;
+
+    public Transform OpposingBase
+    {
+        get { return m_opposingBase; }
+        set { m_opposingBase = value; }
+    }
+    
 
     public BoidScript m_fightRange;
     public BoidScript m_visionRange;
@@ -59,6 +83,22 @@ public class BoidScript : MonoBehaviour
     }
 
     [SerializeField]
+    private DeathScript m_deathScript;
+    public DeathScript DeathScript
+    {
+        get { return m_deathScript; }
+        set { m_deathScript = value; }
+    }
+
+    [SerializeField]
+    private GoToHomeScript m_gotoHome;
+    public GoToHomeScript GotoHome
+    {
+        get { return m_gotoHome; }
+        set { m_gotoHome = value; }
+    }
+
+    [SerializeField]
     private float m_velocity = 1.0f;
 
     [SerializeField]
@@ -69,7 +109,7 @@ public class BoidScript : MonoBehaviour
 
     private float timestamp = 0;
 
-    void update()
+    void Update()
     {
         if (m_fightRange != null)       // Je peux taper une cible
         {
@@ -81,16 +121,35 @@ public class BoidScript : MonoBehaviour
         }
         else if (m_visionRange != null) // Je vois qqun donc je me dirige vers elle
         {
-            m_transform.position += m_target.position.normalized * Time.deltaTime;
+            m_transform.position += (m_visionRange.Transform.position - m_transform.position).normalized * m_velocity * Time.deltaTime;
         }
         else                            // Je me déplace en mode boids
         {
-            var currentPosition = m_transform.position;
+            m_transform.position += (m_opposingBase.position - m_transform.position).normalized * m_velocity * Time.deltaTime;
+        }
+
+    }
+
+    private Vector3 GetSeparationVector(Transform target)
+    {
+        var diff = m_transform.position - target.position;
+        var diffLen = diff.magnitude;
+        var scaler = Mathf.Clamp01(1.0f - diffLen / m_neighboorsVision);
+        return diff * (scaler / diffLen);
+    }
+
+    public void launchWinAnim()
+    {
+        m_animator.SetBool(m_winAnimName, true);
+    }
+
+    /*
+     * var currentPosition = m_transform.position;
             var currentRotation = m_transform.rotation;
 
             var separation = Vector3.zero;
-            var alignment = m_target.forward;
-            var cohesion = m_target.position;
+            var alignment = -m_base.forward;
+            var cohesion = m_base.position;
 
             foreach (BoidScript boid in m_neighboors)
             {
@@ -123,16 +182,5 @@ public class BoidScript : MonoBehaviour
             // Déplacement du boids.
             Vector3 transform_tmp = currentPosition + m_transform.forward * (m_velocity * Time.deltaTime);
             transform.position = new Vector3(transform_tmp.x, transform.position.y, transform_tmp.z);
-        }
-
-    }
-
-    private Vector3 GetSeparationVector(Transform target)
-    {
-        var diff = m_transform.position - target.position;
-        var diffLen = diff.magnitude;
-        var scaler = Mathf.Clamp01(1.0f - diffLen / m_neighboorsVision);
-        return diff * (scaler / diffLen);
-    }
-
+     */
 }
