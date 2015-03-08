@@ -9,10 +9,17 @@ public class GoToHomeScript : MonoBehaviour
     [SerializeField]
     private Transform m_transform;
 
+    [SerializeField]
+    private Animator m_animator;
+
     void Update()
     {
+        m_animator.SetFloat("Velocity", 3);
+        m_animator.SetBool("isFighting", false);
+
 		Vector3 dir = m_base.position - m_transform.position;
-        m_transform.position += dir.normalized * Time.deltaTime;
+        dir.y = 0;
+        m_transform.position += dir.normalized * 3 * Time.deltaTime;
 		m_transform.LookAt (dir);
     }
 }

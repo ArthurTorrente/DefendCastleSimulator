@@ -139,7 +139,7 @@ public class BoidScript : MonoBehaviour
         }
         else                            // Je me déplace en mode boids
         {
-			Vector3 dir = (m_opposingBase.position - m_transform.position);
+			/*Vector3 dir = (m_opposingBase.position - m_transform.position);
 			dir.y = 0;
 			if(!m_run)
 			{
@@ -148,7 +148,51 @@ public class BoidScript : MonoBehaviour
 			}
 
             m_transform.position += dir.normalized * m_velocity * Time.deltaTime;
-			m_transform.LookAt(m_opposingBase.position);
+			m_transform.LookAt(m_opposingBase.position);*/
+
+
+            // Calcule la velocity avec une coefficiant random.
+            var randomCoef = Random.Range(0, 1);
+            var velocity = m_velocity * (1.0f + randomCoef);
+
+            // Initialisation des vecteurs correspondantes aux 3 règles.
+            var separation = Vector3.zero;
+            var alignment = m_opposingBase.forward;
+            var cohesion = m_opposingBase.position;
+
+            foreach(BoidScript boid in m_neighboors)
+            {
+                if (boid == this)
+                    continue;
+
+                var t = boid.m_transform;
+                separation += GetSeparationVector(t);
+                alignment += t.forward;
+                cohesion += t.position;
+            }
+
+            //Division par le nombdre de boids afin de récupérer l'algnement et la cohesion
+            var average = 1.0f / m_neighboors.Count;
+            alignment *= average;
+            cohesion *= average;
+            cohesion = (cohesion - m_transform.position).normalized;
+
+            // Calcule de la direction du boids
+            var direction_tmp = separation + alignment + cohesion;
+            var direction = new Vector3(direction_tmp.x, 0, direction_tmp.z);//separation + alignment + cohesion;
+            var rotation = Quaternion.FromToRotation(Vector3.forward, direction.normalized);
+
+            // Smooth du changement de direction
+            if (rotation != m_transform.rotation)
+            {
+                Quaternion rotation_tmp = Quaternion.Slerp(rotation, m_transform.rotation, 0.8f);
+                transform.rotation = new Quaternion(0, rotation_tmp.y, 0, rotation_tmp.w);
+
+            }
+
+            // Déplacement du boids.
+            Vector3 transform_tmp = m_transform.position + m_transform.forward * (velocity * Time.deltaTime);
+            transform.position = new Vector3(transform_tmp.x, transform.position.y, transform_tmp.z);
         }
 
     }

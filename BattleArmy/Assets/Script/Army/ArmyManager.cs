@@ -9,6 +9,9 @@ public class ArmyManager : MonoBehaviour
     private Settings m_settings;
 
     [SerializeField]
+    private Transform[] m_prefabsBoids;
+
+    [SerializeField]
     private Transform m_prefabsBoid;
 
     [SerializeField]
@@ -34,12 +37,113 @@ public class ArmyManager : MonoBehaviour
 
     public void SpawnTest()
     {
+        int id = 1;
+
+
+        // Initialisation des tanks
+        for (var i = 0; i < m_settings.numberRowsOfTank; i++)
+        {
+            for (var j = 0; j < m_settings.NumberUnitPerRow; j++)
+            {
+                var randomRange = Random.Range(0, 30);
+                var angle = i * Mathf.PI * 2 / m_settings.unitCount;
+                var pos = m_base.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * randomRange;
+                pos.y = 0;
+
+                Transform t = Instantiate(m_prefabsBoids[0], pos, Quaternion.identity) as Transform;
+                t.name = gameObject.name + "_Tank_" + id;
+                BoidScript boid = t.GetComponent<BoidScript>();
+
+                boid.Base = m_base;
+                boid.OpposingBase = m_opposing.m_base;
+                boid.GotoHome.m_base = m_base;
+
+                boid.DeathScript.AfterDeath.AddListener(
+                    delegate
+                    {
+                        deleteBoid(boid);
+                    }
+                    );
+
+                // Instanciate
+                m_units.Add(boid);
+
+                id++;
+            }
+        }
+
+        // Initialisation des distance
+        for (var i = 0; i < m_settings.numberRowsOfRange; i++)
+        {
+            for (var j = 0; j < m_settings.NumberUnitPerRow; j++)
+            {
+                var randomRange = Random.Range(0, 30);
+                var angle = i * Mathf.PI * 2 / m_settings.unitCount;
+                var pos = m_base.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * randomRange;
+                pos.y = 0;
+
+                Transform t = Instantiate(m_prefabsBoids[1], pos, Quaternion.identity) as Transform;
+                t.name = gameObject.name + "_Range_" + id;
+                BoidScript boid = t.GetComponent<BoidScript>();
+
+                boid.Base = m_base;
+                boid.OpposingBase = m_opposing.m_base;
+                boid.GotoHome.m_base = m_base;
+
+                boid.DeathScript.AfterDeath.AddListener(
+                    delegate
+                    {
+                        deleteBoid(boid);
+                    }
+                    );
+
+                // Instanciate
+                m_units.Add(boid);
+
+                id++;
+            }
+        }
+
+        // Initialisation des cac
+        for (var i = 0; i < m_settings.numberRowsOfCAC; i++)
+        {
+            for (var j = 0; j < m_settings.NumberUnitPerRow; j++)
+            {
+                var randomRange = Random.Range(0, 30);
+                var angle = i * Mathf.PI * 2 / m_settings.unitCount;
+                var pos = m_base.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * randomRange;
+                pos.y = 0;
+
+                Transform t = Instantiate(m_prefabsBoids[2], pos, Quaternion.identity) as Transform;
+                t.name = gameObject.name + "_CAC_" + id;
+                BoidScript boid = t.GetComponent<BoidScript>();
+
+                boid.Base = m_base;
+                boid.OpposingBase = m_opposing.m_base;
+                boid.GotoHome.m_base = m_base;
+
+                boid.DeathScript.AfterDeath.AddListener(
+                    delegate
+                    {
+                        deleteBoid(boid);
+                    }
+                    );
+
+                // Instanciate
+                m_units.Add(boid);
+
+                id++;
+            }
+        }
+
+
+        /*
         for (var i = 0; i < m_settings.unitCount; i++)
         {
             var randomRange = Random.Range(0, 30);
             var angle = i * Mathf.PI * 2 / m_settings.unitCount;
             var pos = m_base.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * randomRange;
-			pos.y = 0;
+            pos.y = 0;
 
             BoidScript boid = (Instantiate(m_prefabsBoid, pos, Quaternion.identity) as Transform).GetComponent<BoidScript>();
 
@@ -54,9 +158,10 @@ public class ArmyManager : MonoBehaviour
                 }
                 );
 
-            //Instanciate
+            // Instanciate
             m_units.Add(boid);
         }
+         * */
     }
 
     void Update()

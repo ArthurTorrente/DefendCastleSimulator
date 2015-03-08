@@ -5,6 +5,9 @@ using System.Collections;
 public class DeathScript : MonoBehaviour 
 {
     [SerializeField]
+    private Collider m_collider;
+
+    [SerializeField]
     private Animator m_animator;
 
     [SerializeField]
@@ -29,7 +32,8 @@ public class DeathScript : MonoBehaviour
         m_animator.SetTrigger(m_deathAnim);
 		yield return new WaitForSeconds (3.35f);
         m_afterDeath.Invoke();
-		Destroy (gameObject);
+        m_collider.enabled = false;
+		// Destroy (gameObject);
     }
 
 }
