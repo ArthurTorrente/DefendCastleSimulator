@@ -10,9 +10,6 @@ public class BoidScript : MonoBehaviour
     private Animator m_animator;
 
     [SerializeField]
-    private string m_winAnimName;
-
-    [SerializeField]
     private Transform m_transform;
     public Transform Transform
     {
@@ -119,7 +116,8 @@ public class BoidScript : MonoBehaviour
             if (timestamp >= m_attackSpeed)
             {
                 m_fightRange.HealthManager.takeDamage(m_attackDamage);
-				m_animator.SetFloat("Velocity", 0);
+                m_animator.SetFloat("Speed", 0);
+                m_animator.SetTrigger("StartFight");
 				m_animator.SetBool("isFighting", true);
 				timestamp = 0;
             }            
@@ -131,7 +129,8 @@ public class BoidScript : MonoBehaviour
 			if(!m_run)
 			{
 				m_run = true;
-				m_animator.SetFloat("Velocity", 3);
+                m_animator.SetBool("isFighting", false);
+                m_animator.SetFloat("Speed", m_velocity);
 			}
 				
             m_transform.position += dir.normalized * m_velocity * Time.deltaTime;
@@ -154,7 +153,8 @@ public class BoidScript : MonoBehaviour
             // Calcule la velocity avec une coefficiant random.
             var randomCoef = Random.Range(0, 1);
             var velocity = m_velocity * (1.0f + randomCoef);
-
+            m_animator.SetBool("isFighting", false);
+            m_animator.SetFloat("Speed", velocity);
             // Initialisation des vecteurs correspondantes aux 3 règles.
             var separation = Vector3.zero;
             var alignment = m_opposingBase.forward;
@@ -207,7 +207,7 @@ public class BoidScript : MonoBehaviour
 
     public void launchWinAnim()
     {
-        m_animator.SetBool(m_winAnimName, true);
+        m_animator.SetBool("Win", true);
     }
 
     /*

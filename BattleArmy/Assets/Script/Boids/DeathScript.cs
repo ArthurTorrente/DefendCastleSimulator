@@ -11,9 +11,6 @@ public class DeathScript : MonoBehaviour
     private Animator m_animator;
 
     [SerializeField]
-    private string m_deathAnim;
-
-    [SerializeField]
     private UnityEvent m_afterDeath;
 
     public UnityEvent AfterDeath
@@ -29,7 +26,7 @@ public class DeathScript : MonoBehaviour
 
     IEnumerator death()
     {
-        m_animator.SetTrigger(m_deathAnim);
+        m_animator.SetTrigger("Death");
 		yield return new WaitForSeconds (3.35f);
         m_afterDeath.Invoke();
         m_collider.enabled = false;
