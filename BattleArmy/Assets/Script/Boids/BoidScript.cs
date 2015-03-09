@@ -107,6 +107,20 @@ public class BoidScript : MonoBehaviour
     private float timestamp = 0;
 
 	private bool m_run = false;
+    private float m_separationFactor = 1.0f;
+    private float m_alignementFactor = 1.0f;
+    private float m_cohesionFactor = 1.0f;
+
+    void Start()
+    {
+        if(SettingsManager.Instance == null)
+            return;
+
+        m_separationFactor = SettingsManager.Instance.getSepationFactor();
+        m_alignementFactor = SettingsManager.Instance.getAlignementFactor();
+        m_cohesionFactor = SettingsManager.Instance.getCohesionFactor();
+    }
+
     void Update()
     {
         if (m_fightRange != null)       // Je peux taper une cible
@@ -178,7 +192,7 @@ public class BoidScript : MonoBehaviour
             cohesion = (cohesion - m_transform.position).normalized;
 
             // Calcule de la direction du boids
-            var direction_tmp = separation + alignment + cohesion;
+            var direction_tmp = separation * m_separationFactor + alignment * m_alignementFactor + cohesion * m_cohesionFactor;
             var direction = new Vector3(direction_tmp.x, 0, direction_tmp.z);//separation + alignment + cohesion;
             var rotation = Quaternion.FromToRotation(Vector3.forward, direction.normalized);
 

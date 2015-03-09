@@ -645,7 +645,7 @@ GameObject:
   - 114: {fileID: 11482626}
   - 114: {fileID: 11485774}
   - 114: {fileID: 11425954}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SoldierRifleRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1326,7 @@ GameObject:
   - 4: {fileID: 423784}
   - 33: {fileID: 3364600}
   - 23: {fileID: 2355312}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100084}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa2c1be46e30fec4b94eda5b3c9166b8, type: 3}
   m_Name: 
