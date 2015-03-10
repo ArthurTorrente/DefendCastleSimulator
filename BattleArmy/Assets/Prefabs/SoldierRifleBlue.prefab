@@ -2591,8 +2591,8 @@ MonoBehaviour:
   m_fightRange: {fileID: 0}
   m_visionRange: {fileID: 0}
   m_neighboors: []
-  m_rangeVision: 15
-  m_fightVision: 10
+  m_rangeVision: 30
+  m_fightVision: 20
   m_neighboorsVision: 20
   _healthManager: {fileID: 11467910}
   m_deathScript: {fileID: 11467516}
@@ -2600,6 +2600,7 @@ MonoBehaviour:
   m_velocity: 6
   m_attackDamage: 10
   m_attackSpeed: .5
+  m_detonation: {fileID: 0}
 --- !u!114 &11467516
 MonoBehaviour:
   m_ObjectHideFlags: 1

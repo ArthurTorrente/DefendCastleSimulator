@@ -104,6 +104,10 @@ public class BoidScript : MonoBehaviour
     [SerializeField]
     private float m_attackSpeed = 0.5f;
 
+
+    [SerializeField]
+    private DetonationTankScript m_detonation = null;
+
     private float timestamp = 0;
 
 	private bool m_run = false;
@@ -133,6 +137,8 @@ public class BoidScript : MonoBehaviour
                 m_animator.SetFloat("Speed", 0);
                 m_animator.SetTrigger("StartFight");
 				m_animator.SetBool("isFighting", true);
+                if (m_detonation!=null)
+                    m_detonation.SpawnExplosion(m_fightRange.m_transform.position);
 				timestamp = 0;
             }            
         }

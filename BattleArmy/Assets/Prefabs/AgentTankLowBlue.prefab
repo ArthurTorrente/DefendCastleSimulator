@@ -46,6 +46,7 @@ GameObject:
   - 114: {fileID: 11417656}
   - 114: {fileID: 11438082}
   - 114: {fileID: 11401632}
+  - 114: {fileID: 11482858}
   m_Layer: 8
   m_Name: AgentTankLowBlue
   m_TagString: Untagged
@@ -103,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &181258
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &420190
 Transform:
   m_ObjectHideFlags: 1
@@ -389,15 +390,16 @@ MonoBehaviour:
   m_fightRange: {fileID: 0}
   m_visionRange: {fileID: 0}
   m_neighboors: []
-  m_rangeVision: 15
-  m_fightVision: 10
+  m_rangeVision: 50
+  m_fightVision: 30
   m_neighboorsVision: 20
   _healthManager: {fileID: 11438082}
   m_deathScript: {fileID: 11401632}
   m_gotoHome: {fileID: 11417656}
   m_velocity: 3
-  m_attackDamage: 20
-  m_attackSpeed: 3
+  m_attackDamage: 30
+  m_attackSpeed: 10
+  m_detonation: {fileID: 11482858}
 --- !u!114 &11417656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -524,6 +526,23 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &11482858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fa9b271e0140b41bf5551d74b85fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDetonator: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
+  detonatorPrefabs:
+  - {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
+  explosionLife: 20
+  timeScale: 1
+  detailLevel: 1
 --- !u!135 &13522692
 SphereCollider:
   m_ObjectHideFlags: 1

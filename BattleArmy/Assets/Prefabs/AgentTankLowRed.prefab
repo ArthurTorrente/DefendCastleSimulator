@@ -97,6 +97,7 @@ GameObject:
   - 114: {fileID: 11493070}
   - 114: {fileID: 11409006}
   - 114: {fileID: 11407856}
+  - 114: {fileID: 11436976}
   m_Layer: 9
   m_Name: AgentTankLowRed
   m_TagString: Untagged
@@ -379,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428035503abebfc4686b10cc473ebc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_animator: {fileID: 9535544, guid: 48b6280a1484910428e7264a4cd09551, type: 2}
+  m_animator: {fileID: 9513348}
   m_transform: {fileID: 455646}
   m_target: {fileID: 0}
   m_base: {fileID: 0}
@@ -387,15 +388,16 @@ MonoBehaviour:
   m_fightRange: {fileID: 0}
   m_visionRange: {fileID: 0}
   m_neighboors: []
-  m_rangeVision: 30
-  m_fightVision: 20
+  m_rangeVision: 50
+  m_fightVision: 30
   m_neighboorsVision: 20
   _healthManager: {fileID: 11493070}
   m_deathScript: {fileID: 11409006}
   m_gotoHome: {fileID: 11437546}
   m_velocity: 3
-  m_attackDamage: 20
-  m_attackSpeed: 3
+  m_attackDamage: 30
+  m_attackSpeed: 10
+  m_detonation: {fileID: 11436976}
 --- !u!114 &11409006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,6 +416,23 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &11436976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fa9b271e0140b41bf5551d74b85fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDetonator: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
+  detonatorPrefabs:
+  - {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
+  explosionLife: 20
+  timeScale: 1
+  detailLevel: 1
 --- !u!114 &11437546
 MonoBehaviour:
   m_ObjectHideFlags: 1

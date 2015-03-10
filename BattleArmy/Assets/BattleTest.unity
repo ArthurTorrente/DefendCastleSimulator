@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_settings: {fileID: 878319789}
   m_prefabsBoids:
-  - {fileID: 400084, guid: 1f28d53c3ab6a86499c6a08e095fa045, type: 2}
+  - {fileID: 481542, guid: 48b6280a1484910428e7264a4cd09551, type: 2}
   - {fileID: 400084, guid: 1f28d53c3ab6a86499c6a08e095fa045, type: 2}
   - {fileID: 400084, guid: 0c76617adc9dd744cb1bf0cef5f8b82d, type: 2}
   m_prefabsBoid: {fileID: 400084, guid: 1f28d53c3ab6a86499c6a08e095fa045, type: 2}
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_settings: {fileID: 1247047599}
   m_prefabsBoids:
-  - {fileID: 400084, guid: 72e99e500f933ac4185c4f5732faeb20, type: 2}
+  - {fileID: 455646, guid: 9bbcd3e50819ee5418ca090147e6d04c, type: 2}
   - {fileID: 400084, guid: 72e99e500f933ac4185c4f5732faeb20, type: 2}
   - {fileID: 400084, guid: a15b6fd6ba2ec504ba5dde8866f91b2c, type: 2}
   m_prefabsBoid: {fileID: 400084, guid: 72e99e500f933ac4185c4f5732faeb20, type: 2}
