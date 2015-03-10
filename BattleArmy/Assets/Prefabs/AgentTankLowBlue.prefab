@@ -42,6 +42,10 @@ GameObject:
   - 4: {fileID: 481542}
   - 135: {fileID: 13522692}
   - 205: {fileID: 20587866}
+  - 114: {fileID: 11408814}
+  - 114: {fileID: 11417656}
+  - 114: {fileID: 11438082}
+  - 114: {fileID: 11401632}
   m_Layer: 8
   m_Name: AgentTankLowBlue
   m_TagString: Untagged
@@ -59,16 +63,13 @@ GameObject:
   - 4: {fileID: 420190}
   - 33: {fileID: 3314312}
   - 23: {fileID: 2370152}
-  - 111: {fileID: 11104414}
-  - 114: {fileID: 11450162}
-  - 64: {fileID: 6467648}
   m_Layer: 0
   m_Name: TankTurretNozzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &160042
 GameObject:
   m_ObjectHideFlags: 1
@@ -79,7 +80,6 @@ GameObject:
   - 4: {fileID: 460908}
   - 33: {fileID: 3395574}
   - 23: {fileID: 2365296}
-  - 64: {fileID: 6485688}
   m_Layer: 0
   m_Name: LowPolyTankMesh
   m_TagString: Untagged
@@ -97,14 +97,13 @@ GameObject:
   - 4: {fileID: 452342}
   - 33: {fileID: 3309406}
   - 23: {fileID: 2320894}
-  - 64: {fileID: 6477746}
   m_Layer: 0
   m_Name: TankTracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &181258
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,14 +113,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 488356}
   - 95: {fileID: 9535544}
-  - 114: {fileID: 11423198}
   m_Layer: 8
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &420190
 Transform:
   m_ObjectHideFlags: 1
@@ -142,7 +140,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .289999992, z: -.165000007}
+  m_LocalPosition: {x: 0, y: .629999995, z: -.170000002}
   m_LocalScale: {x: 1.5, y: 1.20000005, z: 2}
   m_Children: []
   m_Father: {fileID: 481542}
@@ -191,7 +189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.20000005, z: 0}
+  m_LocalPosition: {x: -.0935668945, y: 1.90734863e-06, z: 46.1816406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 488356}
@@ -205,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .340000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 460908}
@@ -337,42 +335,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160042}
   m_Mesh: {fileID: 4300000, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
---- !u!64 &6467648
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154258}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300006, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
---- !u!64 &6477746
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170404}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300004, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
---- !u!64 &6485688
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160042}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
 --- !u!95 &9535544
 Animator:
   serializedVersion: 3
@@ -390,59 +352,178 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &11104414
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154258}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 230e341e71a246942a04ccfe9bac3eba, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 230e341e71a246942a04ccfe9bac3eba, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!114 &11423198
+--- !u!114 &11401632
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181258}
+  m_GameObject: {fileID: 121728}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a03f0b23024354c8f8c11ec1c4c3fe, type: 3}
+  m_Script: {fileID: 11500000, guid: fa2c1be46e30fec4b94eda5b3c9166b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrailMaterialOffsetSpeed: .00749999983
-  MoveSpeed: 5
-  MoveFriction: 15
-  MoveAcceleration: 10
-  RotateSpeed: 2
-  RotateFriction: 15
-  RotateAcceleration: 10
-  TrailMaterial: {fileID: 2100000, guid: 7b7188e96441c2b46ac07830f84c4577, type: 2}
-  Animator: {fileID: 9535544}
-  TankTrackTrails:
-  - {fileID: 0}
-  - {fileID: 0}
-  WeaponController: {fileID: 11450162}
-  InControl: 1
---- !u!114 &11450162
+  m_collider: {fileID: 13522692}
+  m_animator: {fileID: 9535544}
+  m_afterDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &11408814
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154258}
+  m_GameObject: {fileID: 121728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd4e60a575556a47993ff2c32387948, type: 3}
+  m_Script: {fileID: 11500000, guid: 428035503abebfc4686b10cc473ebc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 11400000, guid: f813dad920f970848b9b5aa3ceb252ed, type: 2}
-  Nozzle: {fileID: 470896}
+  m_animator: {fileID: 9535544}
+  m_transform: {fileID: 481542}
+  m_target: {fileID: 0}
+  m_base: {fileID: 0}
+  m_opposingBase: {fileID: 0}
+  m_fightRange: {fileID: 0}
+  m_visionRange: {fileID: 0}
+  m_neighboors: []
+  m_rangeVision: 15
+  m_fightVision: 10
+  m_neighboorsVision: 20
+  _healthManager: {fileID: 11438082}
+  m_deathScript: {fileID: 11401632}
+  m_gotoHome: {fileID: 11417656}
+  m_velocity: 3
+  m_attackDamage: 20
+  m_attackSpeed: 3
+--- !u!114 &11417656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121728}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba548909ba711342b6b35f013b91b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_base: {fileID: 0}
+  m_transform: {fileID: 481542}
+  m_animator: {fileID: 9535544}
+--- !u!114 &11438082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5d20653f2d95846a799ce0cd8dc9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxLife: 200
+  m_curLife: 0
+  m_regenModeEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11408814}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11417656}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  m_regenModeDisable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11408814}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11417656}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  m_deathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11408814}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11417656}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11401632}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!135 &13522692
 SphereCollider:
   m_ObjectHideFlags: 1

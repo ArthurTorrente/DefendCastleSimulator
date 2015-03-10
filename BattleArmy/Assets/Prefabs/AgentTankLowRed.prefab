@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 438832}
   - 95: {fileID: 9513348}
-  - 114: {fileID: 11422614}
   m_Layer: 8
   m_Name: Tank
   m_TagString: Untagged
@@ -42,7 +41,6 @@ GameObject:
   - 4: {fileID: 495336}
   - 33: {fileID: 3305156}
   - 23: {fileID: 2386160}
-  - 64: {fileID: 6446384}
   m_Layer: 0
   m_Name: LowPolyTankMesh
   m_TagString: Untagged
@@ -78,8 +76,6 @@ GameObject:
   - 33: {fileID: 3315452}
   - 23: {fileID: 2325082}
   - 111: {fileID: 11170386}
-  - 114: {fileID: 11468628}
-  - 64: {fileID: 6411294}
   m_Layer: 0
   m_Name: TankTurretNozzle
   m_TagString: Untagged
@@ -97,6 +93,10 @@ GameObject:
   - 4: {fileID: 455646}
   - 135: {fileID: 13500522}
   - 205: {fileID: 20500020}
+  - 114: {fileID: 11437546}
+  - 114: {fileID: 11493070}
+  - 114: {fileID: 11409006}
+  - 114: {fileID: 11407856}
   m_Layer: 9
   m_Name: AgentTankLowRed
   m_TagString: Untagged
@@ -114,7 +114,6 @@ GameObject:
   - 4: {fileID: 498528}
   - 33: {fileID: 3359988}
   - 23: {fileID: 2344778}
-  - 64: {fileID: 6475784}
   m_Layer: 0
   m_Name: TankTracks
   m_TagString: Untagged
@@ -129,7 +128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .270000011, z: -.109999999}
+  m_LocalPosition: {x: 0, y: .629999995, z: -.109999999}
   m_LocalScale: {x: 1.5, y: 1.20000005, z: 2}
   m_Children: []
   m_Father: {fileID: 455646}
@@ -153,7 +152,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .340000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 495336}
@@ -167,7 +166,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.20000005, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438832}
@@ -337,42 +336,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195102}
   m_Mesh: {fileID: 4300004, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
---- !u!64 &6411294
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300006, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
---- !u!64 &6446384
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123370}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
---- !u!64 &6475784
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195102}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300004, guid: f0e914eb60ac94141a97f3ea25fe3ab1, type: 3}
 --- !u!95 &9513348
 Animator:
   serializedVersion: 3
@@ -405,44 +368,178 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &11422614
+--- !u!114 &11407856
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101108}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a03f0b23024354c8f8c11ec1c4c3fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrailMaterialOffsetSpeed: .00749999983
-  MoveSpeed: 5
-  MoveFriction: 15
-  MoveAcceleration: 10
-  RotateSpeed: 2
-  RotateFriction: 15
-  RotateAcceleration: 10
-  TrailMaterial: {fileID: 2100000, guid: 7b7188e96441c2b46ac07830f84c4577, type: 2}
-  Animator: {fileID: 9513348}
-  TankTrackTrails:
-  - {fileID: 0}
-  - {fileID: 0}
-  WeaponController: {fileID: 11468628}
-  InControl: 1
---- !u!114 &11468628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142054}
+  m_GameObject: {fileID: 168908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd4e60a575556a47993ff2c32387948, type: 3}
+  m_Script: {fileID: 11500000, guid: 428035503abebfc4686b10cc473ebc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 11400000, guid: f813dad920f970848b9b5aa3ceb252ed, type: 2}
-  Nozzle: {fileID: 413700}
+  m_animator: {fileID: 9535544, guid: 48b6280a1484910428e7264a4cd09551, type: 2}
+  m_transform: {fileID: 455646}
+  m_target: {fileID: 0}
+  m_base: {fileID: 0}
+  m_opposingBase: {fileID: 0}
+  m_fightRange: {fileID: 0}
+  m_visionRange: {fileID: 0}
+  m_neighboors: []
+  m_rangeVision: 30
+  m_fightVision: 20
+  m_neighboorsVision: 20
+  _healthManager: {fileID: 11493070}
+  m_deathScript: {fileID: 11409006}
+  m_gotoHome: {fileID: 11437546}
+  m_velocity: 3
+  m_attackDamage: 20
+  m_attackSpeed: 3
+--- !u!114 &11409006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168908}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2c1be46e30fec4b94eda5b3c9166b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_collider: {fileID: 13500522}
+  m_animator: {fileID: 9513348}
+  m_afterDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &11437546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168908}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba548909ba711342b6b35f013b91b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_base: {fileID: 0}
+  m_transform: {fileID: 455646}
+  m_animator: {fileID: 9513348}
+--- !u!114 &11493070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5d20653f2d95846a799ce0cd8dc9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxLife: 200
+  m_curLife: 0
+  m_regenModeEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11407856}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11437546}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  m_regenModeDisable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11407856}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11437546}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  m_deathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11407856}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11437546}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11409006}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!135 &13500522
 SphereCollider:
   m_ObjectHideFlags: 1
