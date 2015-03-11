@@ -400,6 +400,7 @@ MonoBehaviour:
   m_attackDamage: 30
   m_attackSpeed: 10
   m_detonation: {fileID: 11482858}
+  m_hasBoidsBehavior: 1
 --- !u!114 &11417656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,6 +415,7 @@ MonoBehaviour:
   m_base: {fileID: 0}
   m_transform: {fileID: 481542}
   m_animator: {fileID: 9535544}
+  m_boidScript: {fileID: 11408814}
 --- !u!114 &11438082
 MonoBehaviour:
   m_ObjectHideFlags: 1

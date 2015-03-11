@@ -225,7 +225,14 @@ public class ArmyManager : MonoBehaviour
         boid.m_neighboors.Clear();
 
         foreach (Collider boidVision in neighboors)
-            boid.m_neighboors.Add(boidVision.GetComponent<BoidScript>());
+        {
+            var bs = boidVision.GetComponent<BoidScript>();
+            if (bs.HasBoidsBehavior)
+                boid.m_neighboors.Add(bs);
+            //boid.m_neighboors.Add(boidVision.GetComponent<BoidScript>());
+        }
+
+            
     }
 
     public void deleteBoid(BoidScript boid)

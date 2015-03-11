@@ -104,9 +104,16 @@ public class BoidScript : MonoBehaviour
     [SerializeField]
     private float m_attackSpeed = 0.5f;
 
-
     [SerializeField]
     private DetonationTankScript m_detonation = null;
+
+    [SerializeField]
+    private bool m_hasBoidsBehavior = true;
+    public bool HasBoidsBehavior
+    {
+        get { return m_hasBoidsBehavior; }
+        set { m_hasBoidsBehavior = value; }
+    }
 
     private float timestamp = 0;
 
@@ -129,6 +136,7 @@ public class BoidScript : MonoBehaviour
     {
         if (m_fightRange != null)       // Je peux taper une cible
         {
+            m_hasBoidsBehavior = false;
 			m_run = false;
 			timestamp += Time.deltaTime;
             if (timestamp >= m_attackSpeed)
@@ -145,6 +153,7 @@ public class BoidScript : MonoBehaviour
         }
         else if (m_visionRange != null) // Je vois qqun donc je me dirige vers elle
         {
+            m_hasBoidsBehavior = false;
 			Vector3 dir = m_visionRange.Transform.position - m_transform.position;
 			dir.y = 0;
 			if(!m_run)
@@ -159,18 +168,7 @@ public class BoidScript : MonoBehaviour
         }
         else                            // Je me déplace en mode boids
         {
-			/*Vector3 dir = (m_opposingBase.position - m_transform.position);
-			dir.y = 0;
-			if(!m_run)
-			{
-				m_run = true;
-				m_animator.SetFloat("Velocity", 3);
-			}
-
-            m_transform.position += dir.normalized * m_velocity * Time.deltaTime;
-			m_transform.LookAt(m_opposingBase.position);*/
-
-
+            m_hasBoidsBehavior = true;
             // Calcule la velocity avec une coefficiant random.
             var randomCoef = Random.Range(0, 1);
             var velocity = m_velocity * (1.0f + randomCoef);

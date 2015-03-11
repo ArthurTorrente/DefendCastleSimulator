@@ -2604,6 +2604,7 @@ MonoBehaviour:
   m_base: {fileID: 0}
   m_transform: {fileID: 400084}
   m_animator: {fileID: 9500000}
+  m_boidScript: {fileID: 11493110}
 --- !u!114 &11485774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2745,6 +2746,7 @@ MonoBehaviour:
   m_attackDamage: 10
   m_attackSpeed: .5
   m_detonation: {fileID: 0}
+  m_hasBoidsBehavior: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
