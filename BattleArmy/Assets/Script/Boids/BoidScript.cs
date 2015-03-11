@@ -137,8 +137,9 @@ public class BoidScript : MonoBehaviour
                 m_animator.SetFloat("Speed", 0);
                 m_animator.SetTrigger("StartFight");
 				m_animator.SetBool("isFighting", true);
-                if (m_detonation!=null)
+                if (m_detonation!=null && Random.Range(0,2) == 0)
                     m_detonation.SpawnExplosion(m_fightRange.m_transform.position);
+
 				timestamp = 0;
             }            
         }
