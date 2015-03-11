@@ -39,7 +39,6 @@ public class ArmyManager : MonoBehaviour
     {
         int id = 1;
 
-
         // Initialisation des tanks
         for (var i = 0; i < m_settings.numberRowsOfTank; i++)
         {
@@ -56,7 +55,6 @@ public class ArmyManager : MonoBehaviour
 
                 boid.Base = m_base;
                 boid.OpposingBase = m_opposing.m_base;
-                boid.GotoHome.m_base = m_base;
 
                 boid.DeathScript.AfterDeath.AddListener(
                     delegate
@@ -88,7 +86,6 @@ public class ArmyManager : MonoBehaviour
 
                 boid.Base = m_base;
                 boid.OpposingBase = m_opposing.m_base;
-                boid.GotoHome.m_base = m_base;
 
                 boid.DeathScript.AfterDeath.AddListener(
                     delegate
@@ -120,7 +117,6 @@ public class ArmyManager : MonoBehaviour
 
                 boid.Base = m_base;
                 boid.OpposingBase = m_opposing.m_base;
-                boid.GotoHome.m_base = m_base;
 
                 boid.DeathScript.AfterDeath.AddListener(
                     delegate
@@ -135,33 +131,6 @@ public class ArmyManager : MonoBehaviour
                 id++;
             }
         }
-
-
-        /*
-        for (var i = 0; i < m_settings.unitCount; i++)
-        {
-            var randomRange = Random.Range(0, 30);
-            var angle = i * Mathf.PI * 2 / m_settings.unitCount;
-            var pos = m_base.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * randomRange;
-            pos.y = 0;
-
-            BoidScript boid = (Instantiate(m_prefabsBoid, pos, Quaternion.identity) as Transform).GetComponent<BoidScript>();
-
-            boid.Base = m_base;
-            boid.OpposingBase = m_opposing.m_base;
-            boid.GotoHome.m_base = m_base;
-
-            boid.DeathScript.AfterDeath.AddListener(
-                delegate
-                {
-                    deleteBoid(boid);
-                }
-                );
-
-            // Instanciate
-            m_units.Add(boid);
-        }
-         * */
     }
 
     void Update()
@@ -169,7 +138,6 @@ public class ArmyManager : MonoBehaviour
         foreach(BoidScript boid in m_units)
         {
             //Calculs des targets
-
             getVision(boid);
 
             if(boid.m_fightRange == null && boid.m_visionRange == null)

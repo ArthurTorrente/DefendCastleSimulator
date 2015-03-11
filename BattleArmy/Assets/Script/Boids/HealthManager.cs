@@ -20,13 +20,6 @@ public class HealthManager : MonoBehaviour
         set { m_curLife = value; }
     }
 
-    private bool m_regenMode;
-
-    [SerializeField]
-    private UnityEvent m_regenModeEnable;
-
-    [SerializeField]
-    private UnityEvent m_regenModeDisable;
 
     [SerializeField]
     private UnityEvent m_deathEvent;
@@ -34,25 +27,19 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         m_curLife = m_maxLife;
-
-        m_regenMode = false;
     }
 
     public void takeDamage(int value)
     {
         m_curLife = Mathf.Clamp(m_curLife - value, 0, m_maxLife);
 
-        if(!m_regenMode && m_curLife <= 25)
-        {
-            m_regenMode = true;
-            m_regenModeEnable.Invoke();
-        }
         if (m_curLife == 0)
         {
             m_deathEvent.Invoke();
         }
     }
 
+    /*
     public void regenLife(int value)
     {
         m_curLife = Mathf.Clamp(m_curLife - value, 0, m_maxLife);
@@ -63,4 +50,5 @@ public class HealthManager : MonoBehaviour
             m_regenModeDisable.Invoke();
         }
     }
+    */
 }

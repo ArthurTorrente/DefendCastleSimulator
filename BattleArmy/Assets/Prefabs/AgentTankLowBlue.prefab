@@ -43,7 +43,6 @@ GameObject:
   - 135: {fileID: 13522692}
   - 205: {fileID: 20587866}
   - 114: {fileID: 11408814}
-  - 114: {fileID: 11417656}
   - 114: {fileID: 11438082}
   - 114: {fileID: 11401632}
   - 114: {fileID: 11482858}
@@ -395,27 +394,11 @@ MonoBehaviour:
   m_neighboorsVision: 20
   _healthManager: {fileID: 11438082}
   m_deathScript: {fileID: 11401632}
-  m_gotoHome: {fileID: 11417656}
   m_velocity: 3
   m_attackDamage: 30
   m_attackSpeed: 10
   m_detonation: {fileID: 11482858}
   m_hasBoidsBehavior: 1
---- !u!114 &11417656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121728}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba548909ba711342b6b35f013b91b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_base: {fileID: 0}
-  m_transform: {fileID: 481542}
-  m_animator: {fileID: 9535544}
-  m_boidScript: {fileID: 11408814}
 --- !u!114 &11438082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,80 +412,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxLife: 200
   m_curLife: 0
-  m_regenModeEnable:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11408814}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11417656}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  m_regenModeDisable:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11408814}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 11417656}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   m_deathEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11408814}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11417656}
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
