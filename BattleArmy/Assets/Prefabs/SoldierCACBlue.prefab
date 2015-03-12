@@ -2517,8 +2517,8 @@ MonoBehaviour:
   _healthManager: {fileID: 11432752}
   m_deathScript: {fileID: 11463844}
   m_velocity: 6
-  m_attackDamage: 10
-  m_attackSpeed: .5
+  m_attackDamage: 5
+  m_attackSpeed: 1
   m_detonation: {fileID: 0}
   m_hasBoidsBehavior: 1
 --- !u!114 &11432752
@@ -2532,7 +2532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5d20653f2d95846a799ce0cd8dc9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxLife: 100
+  m_maxLife: 150
   m_curLife: 0
   m_deathEvent:
     m_PersistentCalls:
@@ -2560,6 +2560,47 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  m_stayinBaseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11402510}
+        m_MethodName: launchStayAnim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11402510}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11402510}
+        m_MethodName: set_HasBoidsBehavior
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null

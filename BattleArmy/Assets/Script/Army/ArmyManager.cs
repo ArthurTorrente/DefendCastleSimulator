@@ -6,6 +6,9 @@ using System.Threading;
 public class ArmyManager : MonoBehaviour
 {
     [SerializeField]
+    public int typeUnit; //couleur team : 0 => blue      1 => red
+    
+    [SerializeField]
     private Settings m_settings;
 
     [SerializeField]
@@ -28,6 +31,8 @@ public class ArmyManager : MonoBehaviour
 
     private List<BoidScript> m_units;
 
+    [SerializeField]
+    private GameManager m_gameManager;
     void Start()
     {
         m_units = new List<BoidScript>();
@@ -135,6 +140,7 @@ public class ArmyManager : MonoBehaviour
 
     void Update()
     {
+        
         foreach(BoidScript boid in m_units)
         {
             //Calculs des targets
@@ -205,7 +211,10 @@ public class ArmyManager : MonoBehaviour
 
     public void deleteBoid(BoidScript boid)
     {
+
         m_units.Remove(boid);
+        if (m_units.Count == 0)
+            m_gameManager.gameFinish(typeUnit);
     }
 
     public void winAnimAllBoid()

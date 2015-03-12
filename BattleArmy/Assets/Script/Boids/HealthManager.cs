@@ -24,6 +24,9 @@ public class HealthManager : MonoBehaviour
     [SerializeField]
     private UnityEvent m_deathEvent;
 
+    [SerializeField]
+    private UnityEvent m_stayinBaseEvent;
+
     void Start()
     {
         m_curLife = m_maxLife;
@@ -38,7 +41,11 @@ public class HealthManager : MonoBehaviour
             m_deathEvent.Invoke();
         }
     }
-
+    public void OnTriggerEnter(Collider collider)
+    {
+       // Debug.Log("KEK " + collider.name);
+        m_stayinBaseEvent.Invoke();
+    }
     /*
     public void regenLife(int value)
     {

@@ -21,7 +21,12 @@ public class DeathScript : MonoBehaviour
 
     void OnEnable()
     {
-        StartCoroutine(death());
+        m_animator.SetBool("isFighting", false);
+        m_animator.SetFloat("Speed", 0);
+        m_animator.SetTrigger("Death");
+        m_afterDeath.Invoke();
+        m_collider.enabled = false;
+        //StartCoroutine(death());
     }
 
     IEnumerator death()

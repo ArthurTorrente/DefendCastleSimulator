@@ -215,7 +215,11 @@ public class BoidScript : MonoBehaviour
         var scaler = Mathf.Clamp01(1.0f - diffLen / m_neighboorsVision);
         return diff * (scaler / diffLen);
     }
-
+    public void launchStayAnim()
+    {
+        m_animator.SetBool("isFighting", false);
+        m_animator.SetFloat("Speed", 0);
+    }
     public void launchWinAnim()
     {
         m_animator.SetBool("Win", true);
